@@ -1,6 +1,4 @@
 Django==1.8.4
-haystack==0.26
-pefile==1.2.10-114
+django-haystack==2.4.0
 psycopg2==2.6.1
-python-ptrace==0.8.1
 wsgiref==0.1.2
