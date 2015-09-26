@@ -1,10 +1,10 @@
-import redis
+from herokuapp.settings import REDIS
 
 
 class RedisHitCounterMiddleware:
 
     def __init__(self):
-        self.redis = redis.StrictRedis(host='localhost', port=6379, db=0)
+        pass
 
     def process_view(self, request, view_func, view_args, view_kwargs):
-        self.redis.incr('views')
+        REDIS.incr('views')

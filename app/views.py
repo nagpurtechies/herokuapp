@@ -5,11 +5,10 @@ from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponseRedirect
 from .forms import CreateForm
 # Create your views here.
-import redis
-redis = redis.StrictRedis()
+from herokuapp.settings import REDIS
 
 def index(request):
-    hits = redis.get('views')
+    hits = REDIS.get('views')
     latest_posts = Post.objects.order_by("-pub_date")
     template = loader.get_template('index.html')
     context = RequestContext(request, {
