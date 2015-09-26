@@ -77,15 +77,10 @@ WSGI_APPLICATION = 'herokuapp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'ntheroku',
-        'USER': 'ntheroku',
-        'PASSWORD': 'password',
-        'HOST': 'localhost'
-    }
-}
+import dj_database_url
+
+DATABASES = dict()
+DATABASES['default'] = dj_database_url.config()
 
 
 # Search
@@ -93,7 +88,7 @@ DATABASES = {
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
-        'URL': 'http://127.0.0.1:9200',
+        'URL': os.environ['SEARCHBOX_URL'],
         'INDEX_NAME': 'haystack_nha',
     }
 }
