@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+{% if latest_posts_list %}
+{% for post in latest_posts_list %}
+<h3><a href="/post/{{ post.id }}/">{{ post.title }}</a></h3>
+<small>{{post.pub_date}}</small>
+<div>
+    {{ post.text|truncatewords:10 }}
+</div>
+{% endfor %}
+{% else %}
+<p>No posts have been made yet</p>
+{% endif %}
+<p style="position: absolute; bottom: 10px;"><b>Hits:</b>{{ hits }}</p>
+{% endblock %}
