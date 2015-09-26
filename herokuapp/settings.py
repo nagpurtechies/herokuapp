@@ -87,7 +87,7 @@ DATABASES['default'] = dj_database_url.config()
 # Search
 
 es = urlparse(os.environ.get('SEARCHBOX_SSL_URL'))
-port = es.port or 80
+port = es.port or 443
 HAYSTACK_CONNECTIONS = {
     'default': {
         'ENGINE': 'haystack.backends.elasticsearch_backend.ElasticsearchSearchEngine',
