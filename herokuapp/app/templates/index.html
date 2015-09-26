@@ -1,9 +1,14 @@
-{% if latest_posts_list %}
-<ul>
+{% extends "base.html" %}
+{% block content %}
+	{% if latest_posts_list %}
 	{% for post in latest_posts_list %}
-	<li><a href="/post/{{ post.id }}/">{{ post.title }}</a></li>
+	<h3><a href="/post/{{ post.id }}/">{{ post.title }}</a></h3>
+<small>{{post.pub_date}}</small>
+	<div>
+		{{ post.text|truncatewords:10 }}
+	</div>
 	{% endfor %}
-</ul>
 {% else %}
 <p>No posts have been made yet</p>
 {% endif %}
+{% endblock %}
